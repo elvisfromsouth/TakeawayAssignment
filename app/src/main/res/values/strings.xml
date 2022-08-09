@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">TestTakeaway</string>
+    <string name="restaurant_open">Open</string>
+    <string name="restaurant_closed">Closed</string>
+    <string name="restaurant_order_ahead">Order Ahead</string>
+    <string name="filter_restaurant_hint">Filter by restaurant name</string>
+    <string name="sorting_type_title">Sorting by</string>
+    <string name="sorting_best">Best</string>
+    <string name="sorting_new">New</string>
+    <string name="sorting_rating">Rating</string>
+    <string name="sorting_distance">Distance</string>
+    <string name="sorting_popularity">Popularity</string>
+    <string name="sorting_average_product_price">Average Product Price</string>
+    <string name="sorting_delivery_cost">Delivery Cost</string>
+    <string name="sorting_min_cost">Min Cost</string>
+
+    <string name="sorting_value_pattern">%s: %s</string>
+    <string name="choosing_sorting_dialog_title">Apply sorting</string>
+    <string name="default_error">Something went wrong</string>
+    <string name="empty_list_title">Restaurants are not found</string>
 </resources>
