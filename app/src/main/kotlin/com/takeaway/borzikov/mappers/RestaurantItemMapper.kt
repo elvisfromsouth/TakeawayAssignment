@@ -1,11 +1,11 @@
 package com.takeaway.borzikov.mappers
 
 import com.takeaway.borzikov.R
-import com.takeaway.borzikov.models.RestaurantSort
-import com.takeaway.borzikov.common.Text
 import com.takeaway.borzikov.adapter.RestaurantListItem
+import com.takeaway.borzikov.common.Text
 import com.takeaway.borzikov.domain.models.RestaurantModel
 import com.takeaway.borzikov.domain.models.RestaurantStatus
+import com.takeaway.borzikov.models.RestaurantSort
 import javax.inject.Inject
 
 class RestaurantItemMapper @Inject constructor(
@@ -26,7 +26,7 @@ class RestaurantItemMapper @Inject constructor(
     }
 
     private fun RestaurantStatus.getTitle(): Text.Resource {
-        val resId = when(this) {
+        val resId = when (this) {
             RestaurantStatus.OPEN -> R.string.restaurant_open
             RestaurantStatus.ORDER_AHEAD -> R.string.restaurant_order_ahead
             RestaurantStatus.CLOSE -> R.string.restaurant_closed

@@ -4,7 +4,6 @@ import com.takeaway.borzikov.common.testing.randomString
 import com.takeaway.borzikov.domain.models.RestaurantModel
 import com.takeaway.borzikov.domain.models.RestaurantSortingDetailsModel
 import com.takeaway.borzikov.domain.models.RestaurantStatus
-import java.util.*
 
 
 fun createRestaurantModel(init: RestaurantModelDsl.() -> Unit): RestaurantModel {

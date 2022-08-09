@@ -3,7 +3,6 @@ package com.takeaway.borzikov.data.dsl
 import com.takeaway.borzikov.common.testing.randomString
 import com.takeaway.borzikov.data.dto.RestaurantDto
 import com.takeaway.borzikov.data.dto.RestaurantSortingDetailsDto
-import java.util.*
 
 fun createRestaurantDtoDsl(init: RestaurantDtoDsl.() -> Unit): RestaurantDto {
     val dsl = RestaurantDtoDsl()

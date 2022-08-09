@@ -4,7 +4,6 @@ import com.takeaway.borzikov.adapter.RestaurantListItem
 import com.takeaway.borzikov.common.Text
 import com.takeaway.borzikov.common.testing.randomString
 import com.takeaway.borzikov.common.testing.randomText
-import java.util.*
 
 fun createRestaurantListItem(init: RestaurantListItemDsl.() -> Unit): RestaurantListItem {
     val dsl = RestaurantListItemDsl()

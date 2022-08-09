@@ -5,8 +5,9 @@ import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.rules.activityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.takeaway.borzikov.screens.MainScreen
 import com.takeaway.borzikov.RestaurantListActivity
+import com.takeaway.borzikov.screens.MainScreen
+import io.github.kakaocup.kakao.screen.Screen.Companion.idle
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -33,6 +34,7 @@ class RestaurantListScreenTest {
 
             inputFilter.typeText("sushi")
 
+            idle()
             restaurants {
                 assert(getSize() == 4)
             }
@@ -43,6 +45,7 @@ class RestaurantListScreenTest {
     fun WHEN_applySorting_THEN_showItemsWithFilterText() {
         MainScreen {
             inputFilter.typeText("sushi")
+            idle()
 
             restaurants {
                 childAt<MainScreen.Item>(0) {

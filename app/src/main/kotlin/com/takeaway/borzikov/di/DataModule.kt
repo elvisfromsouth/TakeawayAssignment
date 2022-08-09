@@ -3,8 +3,8 @@ package com.takeaway.borzikov.di
 import android.content.Context
 import android.content.res.AssetManager
 import com.google.gson.Gson
-import com.takeaway.borzikov.data.LocalFileRestaurantsListDataSource
 import com.takeaway.borzikov.data.DefaultRestaurantRepository
+import com.takeaway.borzikov.data.LocalFileRestaurantsListDataSource
 import com.takeaway.borzikov.data.RestaurantsListDataSource
 import com.takeaway.borzikov.data.mappers.RestaurantModelMapper
 import com.takeaway.borzikov.domain.RestaurantRepository

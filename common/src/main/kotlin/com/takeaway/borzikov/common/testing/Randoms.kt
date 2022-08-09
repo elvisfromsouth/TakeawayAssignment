@@ -2,7 +2,7 @@ package com.takeaway.borzikov.common.testing
 
 import com.takeaway.borzikov.common.Text
 import java.math.BigDecimal
-import java.util.*
+import java.util.UUID
 import kotlin.random.Random
 
 fun randomString(): String {

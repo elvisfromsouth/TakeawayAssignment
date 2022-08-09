@@ -1,7 +1,10 @@
 package com.takeaway.borzikov
 
 import android.util.Log
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.takeaway.borzikov.common.AppDispatchers
 import com.takeaway.borzikov.common.SingleLiveEvent
 import com.takeaway.borzikov.common.Text
@@ -29,12 +32,14 @@ class RestaurantListViewModel @Inject constructor(
     private val _showSortingDialogDetails = SingleLiveEvent<SortingDialogDetails>()
     val showSortingDialogDetails: LiveData<SortingDialogDetails> = _showSortingDialogDetails
 
-    private val _state = MutableLiveData<RestaurantListScreenState>(RestaurantListScreenState.Loading)
+    private val _state =
+        MutableLiveData<RestaurantListScreenState>(RestaurantListScreenState.Loading)
     val state: LiveData<RestaurantListScreenState> = _state
 
     private val sortingTypes = RestaurantSort.values()
     private val sortingTitles = sortingTypes.map { Text.Resource(it.title) }
-    private var currentSortPosition: Int = sortingTypes.indexOf(restaurantItemsProvider.currentSorting)
+    private var currentSortPosition: Int =
+        sortingTypes.indexOf(restaurantItemsProvider.currentSorting)
 
     init {
         prepareContent()

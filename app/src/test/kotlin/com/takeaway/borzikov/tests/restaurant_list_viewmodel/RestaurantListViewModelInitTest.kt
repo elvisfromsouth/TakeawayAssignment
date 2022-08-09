@@ -1,8 +1,15 @@
 package com.takeaway.borzikov.tests.restaurant_list_viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.takeaway.borzikov.*
+import com.takeaway.borzikov.MainDispatcherRule
+import com.takeaway.borzikov.R
+import com.takeaway.borzikov.RestaurantItemsProvider
+import com.takeaway.borzikov.RestaurantListScreenState
+import com.takeaway.borzikov.RestaurantListStateHandler
+import com.takeaway.borzikov.RestaurantListViewModel
+import com.takeaway.borzikov.TestAppDispatchers
 import com.takeaway.borzikov.adapter.RestaurantListItem
+import com.takeaway.borzikov.assert
 import com.takeaway.borzikov.common.Text
 import com.takeaway.borzikov.domain.RestaurantInteractor
 import com.takeaway.borzikov.domain.models.RestaurantModel

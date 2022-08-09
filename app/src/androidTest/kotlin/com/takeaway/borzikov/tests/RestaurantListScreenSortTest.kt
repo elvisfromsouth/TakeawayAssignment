@@ -5,7 +5,15 @@ import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.rules.activityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.takeaway.borzikov.*
+import com.takeaway.borzikov.RestaurantListActivity
+import com.takeaway.borzikov.averageProductPriceRestaurantOrder
+import com.takeaway.borzikov.bestRestaurantOrder
+import com.takeaway.borzikov.deliveryCostRestaurantOrder
+import com.takeaway.borzikov.distanceRestaurantOrder
+import com.takeaway.borzikov.minCostRestaurantOrder
+import com.takeaway.borzikov.newRestaurantOrder
+import com.takeaway.borzikov.popularityRestaurantOrder
+import com.takeaway.borzikov.ratingRestaurantOrder
 import com.takeaway.borzikov.screens.MainScreen
 import org.junit.Rule
 import org.junit.Test

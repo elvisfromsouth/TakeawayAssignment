@@ -30,7 +30,7 @@ interface AppDispatchers {
     fun main(): CoroutineDispatcher
 }
 
-class DefaultAppDispatchers: AppDispatchers {
+class DefaultAppDispatchers : AppDispatchers {
     override fun io(): CoroutineDispatcher {
         return Dispatchers.IO
     }

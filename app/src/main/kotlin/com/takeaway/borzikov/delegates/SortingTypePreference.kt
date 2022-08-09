@@ -16,7 +16,8 @@ class SortingTypePreference(
     override fun getValue(thisRef: Any, property: KProperty<*>): RestaurantSort {
         if (lastSorting == null) {
             val sortingName = sharedPreferences.getString(key, null)
-            lastSorting = RestaurantSort.values().firstOrNull { it.name == sortingName } ?: defaultValue
+            lastSorting = RestaurantSort.values()
+                    .firstOrNull { it.name == sortingName } ?: defaultValue
         }
         return lastSorting!!
     }

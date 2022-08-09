@@ -2,7 +2,8 @@ package com.takeaway.borzikov.di
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.takeaway.borzikov.*
+import com.takeaway.borzikov.RestaurantListStateHandler
+import com.takeaway.borzikov.RestaurantListStateHandlerImpl
 import com.takeaway.borzikov.common.AppDispatchers
 import com.takeaway.borzikov.common.DefaultAppDispatchers
 import dagger.Binds

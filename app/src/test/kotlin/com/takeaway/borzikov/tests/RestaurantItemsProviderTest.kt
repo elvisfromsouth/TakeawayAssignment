@@ -2,12 +2,16 @@ package com.takeaway.borzikov.tests
 
 import android.content.SharedPreferences
 import androidx.lifecycle.SavedStateHandle
-import com.takeaway.borzikov.*
+import com.takeaway.borzikov.RestaurantItemsProvider
+import com.takeaway.borzikov.RestaurantTestItem
 import com.takeaway.borzikov.adapter.RestaurantListItem
 import com.takeaway.borzikov.common.testing.randomString
+import com.takeaway.borzikov.createRestaurantsOnSortingValues
+import com.takeaway.borzikov.createRestaurantsOnStatusWithName
 import com.takeaway.borzikov.domain.models.RestaurantStatus
 import com.takeaway.borzikov.mappers.RestaurantItemMapper
 import com.takeaway.borzikov.models.RestaurantSort
+import com.takeaway.borzikov.reorderAccordingTo
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
 import io.mockk.junit4.MockKRule
@@ -15,7 +19,6 @@ import io.mockk.mockk
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import java.util.*
 
 class RestaurantItemsProviderTest {
 
@@ -102,7 +105,7 @@ class RestaurantItemsProviderTest {
     @Test
     fun `WHEN applies best sort THEN sort apply successfully`() {
         val values = listOf(-1.0, 1.0, 0.0)
-        val restaurants =createRestaurantsOnSortingValues(values.size) { index ->
+        val restaurants = createRestaurantsOnSortingValues(values.size) { index ->
             bestMatch = values[index]
         }
 
@@ -122,7 +125,7 @@ class RestaurantItemsProviderTest {
     @Test
     fun `WHEN applies newest sort THEN sort apply successfully`() {
         val values = listOf(-1.0, 1.0, 0.0)
-        val restaurants =createRestaurantsOnSortingValues(values.size) { index ->
+        val restaurants = createRestaurantsOnSortingValues(values.size) { index ->
             newest = values[index]
         }
 
@@ -142,7 +145,7 @@ class RestaurantItemsProviderTest {
     @Test
     fun `WHEN applies rating sort THEN sort apply successfully`() {
         val values = listOf(-1.0, 1.0, 0.0)
-        val restaurants =createRestaurantsOnSortingValues(values.size) { index ->
+        val restaurants = createRestaurantsOnSortingValues(values.size) { index ->
             ratingAverage = values[index]
         }
 
@@ -162,7 +165,7 @@ class RestaurantItemsProviderTest {
     @Test
     fun `WHEN applies distance sort THEN sort apply successfully`() {
         val values = listOf(-1, 1, 0)
-        val restaurants =createRestaurantsOnSortingValues(values.size) { index ->
+        val restaurants = createRestaurantsOnSortingValues(values.size) { index ->
             distance = values[index]
         }
 
@@ -182,7 +185,7 @@ class RestaurantItemsProviderTest {
     @Test
     fun `WHEN applies popularity sort THEN sort apply successfully`() {
         val values = listOf(-1.0, 1.0, 0.0)
-        val restaurants =createRestaurantsOnSortingValues(values.size) { index ->
+        val restaurants = createRestaurantsOnSortingValues(values.size) { index ->
             popularity = values[index]
         }
 
@@ -202,7 +205,7 @@ class RestaurantItemsProviderTest {
     @Test
     fun `WHEN applies product price sort THEN sort apply successfully`() {
         val values = listOf(-1.0, 1.0, 0.0)
-        val restaurants =createRestaurantsOnSortingValues(values.size) { index ->
+        val restaurants = createRestaurantsOnSortingValues(values.size) { index ->
             averageProductPrice = values[index].toBigDecimal()
         }
         val targetItems = restaurants.reorderAccordingTo(
@@ -221,7 +224,7 @@ class RestaurantItemsProviderTest {
     @Test
     fun `WHEN applies delivery cost sort THEN sort apply successfully`() {
         val values = listOf(-1.0, 1.0, 0.0)
-        val restaurants =createRestaurantsOnSortingValues(values.size) { index ->
+        val restaurants = createRestaurantsOnSortingValues(values.size) { index ->
             deliveryCosts = values[index].toBigDecimal()
         }
         val targetItems = restaurants.reorderAccordingTo(
@@ -240,7 +243,7 @@ class RestaurantItemsProviderTest {
     @Test
     fun `WHEN applies min cost sort THEN sort apply successfully`() {
         val values = listOf(-1.0, 1.0, 0.0)
-        val restaurants =createRestaurantsOnSortingValues(values.size) { index ->
+        val restaurants = createRestaurantsOnSortingValues(values.size) { index ->
             minCost = values[index].toBigDecimal()
         }
         val targetItems = restaurants.reorderAccordingTo(

@@ -10,9 +10,10 @@ import org.junit.Test
 
 class RestaurantModelMapperTest {
 
-    private val restaurantSortingDetailsMapper : RestaurantSortingDetailsMapper = mockk()
+    private val restaurantSortingDetailsMapper: RestaurantSortingDetailsMapper = mockk()
 
-    private val mapper: RestaurantModelMapper = RestaurantModelMapper(restaurantSortingDetailsMapper)
+    private val mapper: RestaurantModelMapper =
+        RestaurantModelMapper(restaurantSortingDetailsMapper)
 
     @Before
     fun init() {
