@@ -27,46 +27,45 @@ class RestaurantListScreenSortTest {
 
     @Test
     fun WHEN_applyBestSort_THEN_showRestaurantInCorrectOrder() {
-        testSortingOrder("Best", bestRestaurantOrder)
+        assertSortingOrder("Best", bestRestaurantOrder)
     }
 
     @Test
     fun WHEN_applyNewSort_THEN_showRestaurantInCorrectOrder() {
-        testSortingOrder("New", newRestaurantOrder)
+        assertSortingOrder("New", newRestaurantOrder)
     }
 
     @Test
     fun WHEN_applyRatingSort_THEN_showRestaurantInCorrectOrder() {
-        testSortingOrder("Rating", ratingRestaurantOrder)
+        assertSortingOrder("Rating", ratingRestaurantOrder)
     }
 
     @Test
     fun WHEN_applyDistanceSort_THEN_showRestaurantInCorrectOrder() {
-        testSortingOrder("Distance", distanceRestaurantOrder)
+        assertSortingOrder("Distance", distanceRestaurantOrder)
     }
 
     @Test
     fun WHEN_applyPopularitySort_THEN_showRestaurantInCorrectOrder() {
-        testSortingOrder("Popularity", popularityRestaurantOrder)
+        assertSortingOrder("Popularity", popularityRestaurantOrder)
     }
 
     @Test
     fun WHEN_applyAverageProductPriceSort_THEN_showRestaurantInCorrectOrder() {
-        testSortingOrder("Average Product Price", averageProductPriceRestaurantOrder)
+        assertSortingOrder("Average Product Price", averageProductPriceRestaurantOrder)
     }
 
     @Test
     fun WHEN_applyDeliveryCostSort_THEN_showRestaurantInCorrectOrder() {
-        testSortingOrder("Delivery Cost", deliveryCostRestaurantOrder)
+        assertSortingOrder("Delivery Cost", deliveryCostRestaurantOrder)
     }
 
     @Test
     fun WHEN_applyMinCostSort_THEN_showRestaurantInCorrectOrder() {
-        testSortingOrder("Min Cost", minCostRestaurantOrder)
+        assertSortingOrder("Min Cost", minCostRestaurantOrder)
     }
 
-
-    private fun testSortingOrder(
+    private fun assertSortingOrder(
         sortingName: String,
         order: List<String>
     ) {
@@ -74,12 +73,8 @@ class RestaurantListScreenSortTest {
             sortTypeButton.click()
             onView(withText(sortingName)).perform(click())
 
-            restaurants {
-                order.forEachIndexed { index, text ->
-                    childAt<MainScreen.Item>(index) {
-                        name.startsWithText(text)
-                    }
-                }
+            order.forEachIndexed { index, text ->
+                assertRestaurantNameContains(index, text)
             }
         }
     }

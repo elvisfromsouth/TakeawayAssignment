@@ -21,23 +21,20 @@ class RestaurantListScreenTest {
 
     @Test
     fun WHEN_applySorting_THEN_sortingNameSetForButton() {
-        checkButtonTitle("Rating")
-        MainScreen.sortTypeButton.hasText("Rating")
+        selectSorting("Rating")
+        MainScreen.assertSortingButtonText("Rating")
     }
 
     @Test
     fun WHEN_applySorting_THEN_restaurantsCountReduced() {
         MainScreen {
-            restaurants {
-                assert(getSize() == 19)
-            }
+            assertRestaurantCount(19)
 
             inputFilter.typeText("sushi")
 
             idle()
-            restaurants {
-                assert(getSize() == 4)
-            }
+
+            assertRestaurantCount(4)
         }
     }
 
@@ -47,63 +44,36 @@ class RestaurantListScreenTest {
             inputFilter.typeText("sushi")
             idle()
 
-            restaurants {
-                childAt<MainScreen.Item>(0) {
-                    name.containsText("Sushi")
-                }
-                childAt<MainScreen.Item>(1) {
-                    name.containsText("Sushi")
-                }
-                childAt<MainScreen.Item>(2) {
-                    name.containsText("Sushi")
-                }
-                childAt<MainScreen.Item>(3) {
-                    name.containsText("Sushi")
-                }
+            (0..3).forEach {
+                assertRestaurantNameContains(it, "Sushi")
             }
         }
     }
 
     @Test
     fun WHEN_chosedAnyTypeOfSort_THEN_restaurantAlwaysSortByStatusCorrectly() {
-        checkButtonTitle("Delivery Cost")
+        selectSorting("Delivery Cost")
 
-        MainScreen {
-            restaurants {
-                (0..7).forEach {
-                    childAt<MainScreen.Item>(it) {
-                        status.hasText("Open")
-                    }
-                }
-                (8..14).forEach {
-                    childAt<MainScreen.Item>(it) {
-                        status.containsText("Order Ahead")
-                    }
-                }
-                (15..18).forEach {
-                    childAt<MainScreen.Item>(it) {
-                        status.containsText("Closed")
-                    }
-                }
-            }
+        (0..7).forEach {
+            MainScreen.assertRestaurantStatus(it, "Open")
+        }
+        (8..14).forEach {
+            MainScreen.assertRestaurantStatus(it, "Order Ahead")
+        }
+        (15..18).forEach {
+            MainScreen.assertRestaurantStatus(it, "Closed")
         }
     }
 
     @Test
     fun WHEN_applySorting_THEN_itemShortDescriptionStartWithSortName() {
-        checkButtonTitle("Best")
-        checkButtonTitle("Rating")
+        selectSorting("Best")
+        selectSorting("Rating")
 
-        MainScreen {
-            restaurants {
-                children<MainScreen.Item> {
-                    sortingDescription.startsWithText("Rating")
-                }
-            }
-        }
+        MainScreen.assertRestaurantDescriptionsStartWith("Rating")
     }
 
-    private fun checkButtonTitle(text: String) {
+    private fun selectSorting(text: String) {
         MainScreen {
             sortTypeButton.click()
             onView(withText(text)).perform(click())

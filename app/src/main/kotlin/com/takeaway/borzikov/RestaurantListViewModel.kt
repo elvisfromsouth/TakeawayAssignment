@@ -54,7 +54,7 @@ class RestaurantListViewModel @Inject constructor(
     }
 
     fun applyFilter(text: String) {
-        val items = restaurantItemsProvider.getRestaurantItems(filter = text)
+        val items = restaurantItemsProvider.getRestaurantItems(filter = text.trim())
         _state.value = screenStateHandler.getContentState(items)
     }
 

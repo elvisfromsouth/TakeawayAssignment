@@ -30,4 +30,38 @@ object MainScreen : KScreen<MainScreen>() {
         val sortingDescription: KTextView =
             KTextView(parent) { withId(R.id.tv_sorting_description) }
     }
+
+    fun assertRestaurantCount(targetSize: Int) {
+        restaurants {
+            assert(getSize() == targetSize)
+        }
+    }
+
+    fun assertSortingButtonText(text: String) {
+        sortTypeButton.hasText(text)
+    }
+
+    fun assertRestaurantDescriptionsStartWith(text: String) {
+        restaurants {
+            children<Item> {
+                sortingDescription.startsWithText(text)
+            }
+        }
+    }
+
+    fun assertRestaurantStatus(position: Int, text: String) {
+        restaurants {
+            childAt<Item>(position) {
+                status.hasText(text)
+            }
+        }
+    }
+
+    fun assertRestaurantNameContains(position: Int, text: String) {
+        restaurants {
+            childAt<Item>(position) {
+                name.containsText(text)
+            }
+        }
+    }
 }
